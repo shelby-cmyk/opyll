@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Opyll Stack — branded supplements built for the full arc of GLP-1 therapy and beyond. Core 4 foundation + specialty add-ons for mood, sleep, beauty, hormonal balance, and longevity.">
+<meta name="robots" content="noindex">
+<title>The Opyll Stack — Branded supplements for GLP-1 members</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #15171C;
+    --ink-soft: #5C6068;
+    --ink-faint: #9CA0A8;
+    --bg: #FFFFFF;
+    --hairline: rgba(21,23,28,0.08);
+    --hairline-strong: rgba(21,23,28,0.16);
+    --opal-violet: #B4A3D1;
+    --opal-violet-bg: #EFEAF5;
+    --opal-peach: #E89D6F;
+    --opal-peach-bg: #FBE4D2;
+    --opal-gold: #C49A6C;
+    --opal-gold-bg: #F5E6CC;
+    --opal-mint: #A8C4B4;
+    --opal-mint-bg: #E4EDE7;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-feature-settings: "ss01", "cv11";
+    position: relative;
+    overflow-x: hidden;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--hairline);
+    height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+  }
+  .wordmark {
+    font-family: var(--serif); font-weight: 500; font-size: 28px;
+    letter-spacing: -0.03em; color: var(--ink);
+    display: inline-flex; align-items: baseline; gap: 0.06em; line-height: 1;
+  }
+  .mark {
+    display: inline-block; width: 0.36em; height: 0.36em;
+    border-radius: 50%; transform: translateY(0.02em);
+    background:
+      radial-gradient(circle at 30% 26%, rgba(255,255,255,0.95) 0%, transparent 32%),
+      radial-gradient(circle at 70% 30%, var(--opal-peach-bg) 0%, transparent 48%),
+      radial-gradient(circle at 28% 72%, rgba(180,163,209,0.55) 0%, transparent 52%),
+      radial-gradient(circle at 78% 72%, rgba(168,196,180,0.45) 0%, transparent 48%),
+      linear-gradient(135deg, #FBE9D7, #EFEAF5 55%, #E4EDE7);
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; font-size: 14px; font-weight: 500; }
+  .nav-links a { color: var(--ink); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--opal-peach); }
+  .nav-links a.active { color: var(--opal-peach); border-bottom: 1.5px solid var(--opal-peach); padding-bottom: 3px; }
+  .nav-cta {
+    font-size: 14px; font-weight: 600; padding: 12px 24px;
+    border-radius: 999px; background: var(--ink); color: #FFFFFF;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--opal-peach); color: var(--ink); }
+
+  /* HERO */
+  .page-hero {
+    padding: 96px 40px 64px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .page-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--opal-peach);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .page-hero h1 {
+    font-family: var(--sans);
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    margin-bottom: 32px;
+  }
+  .page-hero h1 .accent {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(90deg, var(--opal-peach) 0%, var(--opal-violet) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-hero p {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 40px;
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+  .back-link:hover { color: var(--opal-peach); }
+
+  /* SECTION */
+  section { padding: 80px 40px; max-width: 1280px; margin: 0 auto; position: relative; }
+  .section-marker {
+    display: flex; align-items: baseline; gap: 28px;
+    margin-bottom: 32px; padding-top: 8px; padding-right: 8px;
+    max-width: 1080px; margin-left: auto; margin-right: auto;
+  }
+  .section-marker .num {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(60px, 8vw, 96px); font-weight: 400;
+    line-height: 1.05; letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--opal-peach) 0%, var(--opal-violet) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    flex-shrink: 0;
+    padding: 0.08em 0.12em 0.08em 0;
+  }
+  .section-marker .label {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-soft); padding-bottom: 14px;
+    border-bottom: 1px solid var(--hairline-strong); flex: 1;
+  }
+  .section-h {
+    font-family: var(--sans); font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700; line-height: 1.05; letter-spacing: -0.035em;
+    margin-bottom: 24px; max-width: 1080px; margin-left: auto; margin-right: auto;
+  }
+  .section-h .accent {
+    font-family: var(--serif); font-style: italic; font-weight: 400; padding-right: 0.05em;
+  }
+  .section-sub {
+    font-size: 18px; line-height: 1.55; color: var(--ink-soft);
+    max-width: 640px; margin: 0 auto 56px;
+  }
+  .center { text-align: center; }
+  .center .section-marker { justify-content: center; }
+  .center .section-marker .label { flex: none; border-bottom: none; padding-bottom: 0; }
+
+  /* CORE 4 GRID */
+  .core-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .product-card {
+    background: #FFFFFF;
+    border: 1px solid var(--hairline);
+    border-radius: 24px;
+    padding: 32px 28px 36px;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px -16px rgba(21,23,28,0.10);
+    border-color: var(--hairline-strong);
+  }
+  .product-photo {
+    width: 100%;
+    aspect-ratio: 1402 / 1122;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-photo img {
+    width: 100%; height: 100%; object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .product-card:hover .product-photo img { transform: translateY(-3px) scale(1.04); }
+  .product-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    padding-bottom: 0.06em;
+  }
+  .product-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .product-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .product-ingredients {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 16px;
+    margin-top: auto;
+    border-top: 1px solid var(--hairline);
+    line-height: 1.5;
+  }
+  .product-price {
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--opal-peach);
+    font-weight: 700;
+  }
+
+  /* SPECIALTY GRID */
+  .specialty-section { background: linear-gradient(180deg, #FFFFFF 0%, #FAFAF9 100%); }
+  .category-group {
+    margin-bottom: 64px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .category-group:last-child { margin-bottom: 0; }
+  .category-h {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .category-h .category-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--opal-peach);
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+  .specialty-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .specialty-card {
+    background: #FFFFFF;
+    border: 1px solid var(--hairline);
+    border-radius: 20px;
+    padding: 32px 28px;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .specialty-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -12px rgba(21,23,28,0.08);
+    border-color: var(--hairline-strong);
+  }
+  .specialty-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .specialty-card.peach::before { background: var(--opal-peach); }
+  .specialty-card.violet::before { background: var(--opal-violet); }
+  .specialty-card.gold::before { background: var(--opal-gold); }
+  .specialty-card.mint::before { background: var(--opal-mint); }
+  .specialty-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    padding-bottom: 0.06em;
+  }
+  .specialty-name .pill {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--opal-peach-bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .specialty-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .specialty-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .specialty-ingredients {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 14px;
+    border-top: 1px solid var(--hairline);
+    line-height: 1.5;
+  }
+  .specialty-price {
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--opal-peach);
+    font-weight: 700;
+  }
+
+  /* BUNDLING INFO */
+  .bundle-info {
+    background: var(--ink);
+    color: #FFFFFF;
+    padding: 80px 40px;
+    margin: 0;
+    max-width: none;
+    text-align: center;
+  }
+  .bundle-info-inner { max-width: 760px; margin: 0 auto; }
+  .bundle-info h2 {
+    font-family: var(--sans);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin-bottom: 24px;
+    color: #FFFFFF;
+  }
+  .bundle-info h2 .accent {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--opal-peach);
+  }
+  .bundle-info p {
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+  }
+  .bundle-info-row {
+    display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .bundle-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    padding: 24px 28px;
+    min-width: 200px;
+  }
+  .bundle-card strong {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--opal-peach);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .bundle-card span {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .bundle-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--opal-peach); color: var(--ink);
+    padding: 16px 32px; border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    transition: background 0.2s;
+  }
+  .bundle-cta:hover { background: #FFFFFF; }
+
+  /* FOOTER */
+  footer {
+    padding: 64px 40px 32px;
+    border-top: 1px solid var(--hairline);
+    text-align: center;
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.06em;
+    line-height: 1;
+  }
+  .footer-tagline {
+    font-size: 14px; color: var(--ink-soft); margin-bottom: 32px;
+  }
+  .footer-disclaimer {
+    max-width: 720px;
+    margin: 0 auto 24px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .footer-disclaimer strong { color: var(--ink); font-weight: 600; }
+  .footer-bottom {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; height: 64px; }
+    .nav-links { display: none; }
+    .wordmark { font-size: 24px; }
+    .nav-cta { padding: 10px 20px; font-size: 13px; }
+    .page-hero { padding: 56px 24px 32px; }
+    section { padding: 56px 24px; }
+    .core-grid { grid-template-columns: repeat(2, 1fr); }
+    .specialty-grid { grid-template-columns: 1fr; gap: 16px; }
+    .section-marker { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .section-marker .num { font-size: 64px; line-height: 1.05; }
+    .section-marker .label { padding-bottom: 0; border-bottom: none; font-size: 10px; }
+    .bundle-info { padding: 56px 24px; }
+    .specialty-name { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="wordmark" aria-label="Opyll home"><span>Opyll</span><span class="mark" aria-hidden="true"></span></a>
+  <ul class="nav-links">
+    <li><a href="/#medication">Medication</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/#process">How it works</a></li>
+    <li><a href="stack.html" class="active">The Stack</a></li>
+    <li><a href="/#faq">Questions</a></li>
+  </ul>
+  <a href="/#pricing" class="nav-cta">Free visit</a>
+</nav>
+
+<header class="page-hero">
+  <a href="/" class="back-link">← Back to Opyll</a>
+  <div class="page-eyebrow">The Opyll Stack · Catalog</div>
+  <h1>A complete wellness toolkit, <span class="accent">from first dose forward.</span></h1>
+  <p>Four foundational formulations plus a growing library of specialty add-ons — designed to make your GLP-1 journey more sustainable from your first dose, and to protect what you've built for the years after. Mix, match, or take just what your body asks for.</p>
+</header>
+
+<section class="center">
+  <div class="section-marker"><div class="num">Nº 01</div><div class="label">The Core 4 · Foundation</div></div>
+  <h2 class="section-h">Start here. <span class="accent">Then build out.</span></h2>
+  <p class="section-sub">Every Opyll member is encouraged to consider the Core 4 first — they cover the most common nutritional gaps GLP-1 therapy creates.</p>
+
+  <div class="core-grid">
+    <article class="product-card">
+      <div class="product-photo"><img src="stack-rise.png" alt="Opyll Rise bottle" loading="lazy"></div>
+      <div class="product-name">Rise</div>
+      <div class="product-tag">Energy · Methylation</div>
+      <p class="product-text">Methylated B-complex with active folate and B12. Supports energy, mood, and metabolic resilience during active treatment.</p>
+      <div class="product-ingredients">Methyl B12 · Methyl folate · B6 · Niacin · Pantothenic acid</div>
+      <div class="product-price">$22/mo a la carte</div>
+    </article>
+    <article class="product-card">
+      <div class="product-photo"><img src="stack-daily.png" alt="Opyll Daily bottle" loading="lazy"></div>
+      <div class="product-name">Daily</div>
+      <div class="product-tag">Daily Foundation</div>
+      <p class="product-text">A complete daily multivitamin tuned for adults on GLP-1 therapy. Fills the nutrient gaps as appetite shifts through the program.</p>
+      <div class="product-ingredients">Vitamins A · C · D3 · E · K2 · Zinc · Selenium · Chromium · Magnesium</div>
+      <div class="product-price">$22/mo a la carte</div>
+    </article>
+    <article class="product-card">
+      <div class="product-photo"><img src="stack-hold.png" alt="Opyll Hold bottle" loading="lazy"></div>
+      <div class="product-name">Hold</div>
+      <div class="product-tag">Muscle · Recovery</div>
+      <p class="product-text">Creatine, leucine, and recovery support. Preserves lean mass through the loss phase — and supports it for the long arc.</p>
+      <div class="product-ingredients">Creatine monohydrate · L-leucine · BCAA blend · L-citrulline</div>
+      <div class="product-price">$22/mo a la carte</div>
+    </article>
+    <article class="product-card">
+      <div class="product-photo"><img src="stack-flow.png" alt="Opyll Flow bottle" loading="lazy"></div>
+      <div class="product-name">Flow</div>
+      <div class="product-tag">Gut · Hydration</div>
+      <p class="product-text">Soluble fiber and electrolytes for motility and hydration — the two things GLP-1 patients need most, in one daily ritual.</p>
+      <div class="product-ingredients">Psyllium husk · Pink Himalayan salt · Magnesium · Potassium</div>
+      <div class="product-price">$22/mo a la carte</div>
+    </article>
+  </div>
+</section>
+
+<section class="specialty-section">
+  <div style="max-width:1280px;margin:0 auto;text-align:center;">
+    <div class="section-marker" style="justify-content:center;"><div class="num">Nº 02</div><div class="label" style="flex:none;border-bottom:none;padding-bottom:0;">Specialty add-ons</div></div>
+    <h2 class="section-h">Add what your <span class="accent">body asks for.</span></h2>
+    <p class="section-sub">Pick the formulations that match your needs. Each ships in the same monthly delivery as your Stack, and can be added or removed anytime.</p>
+  </div>
+
+  <div class="category-group">
+    <div class="category-h"><span class="category-num">i.</span> Mind &amp; Mood</div>
+    <div class="specialty-grid">
+      <article class="specialty-card peach">
+        <div class="specialty-name">Calm</div>
+        <div class="specialty-tag">Mood · Focus · Stress</div>
+        <p class="specialty-text">Smooths mood swings and racing thoughts that can come with appetite suppression. Take morning or mid-day.</p>
+        <div class="specialty-ingredients">5-HTP · L-theanine · Ashwagandha (KSM-66) · Lemon balm</div>
+        <div class="specialty-price">$24/mo</div>
+      </article>
+      <article class="specialty-card violet">
+        <div class="specialty-name">Rest</div>
+        <div class="specialty-tag">Sleep · Recovery</div>
+        <p class="specialty-text">Helps you fall asleep faster and stay asleep deeper — important when appetite changes disrupt rhythm.</p>
+        <div class="specialty-ingredients">Melatonin (1mg) · Magnesium glycinate · Valerian root · Passionflower</div>
+        <div class="specialty-price">$24/mo</div>
+      </article>
+      <article class="specialty-card gold">
+        <div class="specialty-name">Spark</div>
+        <div class="specialty-tag">Cognitive · Clarity</div>
+        <p class="specialty-text">For mental energy without the crash. Designed for the slow, sustained focus GLP-1 patients say they want back.</p>
+        <div class="specialty-ingredients">L-theanine · Bacopa · Ginkgo · Huperzine-A · DMAE</div>
+        <div class="specialty-price">$28/mo</div>
+      </article>
+    </div>
+  </div>
+
+  <div class="category-group">
+    <div class="category-h"><span class="category-num">ii.</span> Body &amp; Beauty</div>
+    <div class="specialty-grid">
+      <article class="specialty-card peach">
+        <div class="specialty-name">Glow</div>
+        <div class="specialty-tag">Skin · Hair · Nails</div>
+        <p class="specialty-text">For the look people call "Ozempic face" — rapid weight loss can dehydrate skin and thin hair. Glow rebuilds.</p>
+        <div class="specialty-ingredients">Collagen peptides · Hyaluronic acid · Biotin · Vitamin C · Phytoceramides</div>
+        <div class="specialty-price">$32/mo</div>
+      </article>
+      <article class="specialty-card mint">
+        <div class="specialty-name">Ease</div>
+        <div class="specialty-tag">GI · Nausea relief</div>
+        <p class="specialty-text">Targets the #1 reason members pause GLP-1: nausea and slow GI motility. Take 20 min before injection.</p>
+        <div class="specialty-ingredients">Ginger root · Digestive enzyme blend · Probiotic (Lactobacillus + Bacillus) · Slippery elm</div>
+        <div class="specialty-price">$26/mo</div>
+      </article>
+      <article class="specialty-card gold">
+        <div class="specialty-name">Bone</div>
+        <div class="specialty-tag">Skeletal · Density</div>
+        <p class="specialty-text">Rapid weight loss can shed bone mineral. Bone stacks the trio every clinician recommends.</p>
+        <div class="specialty-ingredients">Calcium citrate · Vitamin D3 · Vitamin K2 (MK-7) · Boron</div>
+        <div class="specialty-price">$24/mo</div>
+      </article>
+    </div>
+  </div>
+
+  <div class="category-group">
+    <div class="category-h"><span class="category-num">iii.</span> Hormonal Balance</div>
+    <div class="specialty-grid">
+      <article class="specialty-card violet">
+        <div class="specialty-name">Bloom <span class="pill">For her</span></div>
+        <div class="specialty-tag">Peri · Menopause · Hormonal</div>
+        <p class="specialty-text">Built for women in perimenopause or menopause. Supports estrogen metabolism, hot flashes, and mood balance.</p>
+        <div class="specialty-ingredients">DIM · Black cohosh · Evening primrose · Vitamin D3 · K2 · Maca</div>
+        <div class="specialty-price">$32/mo</div>
+      </article>
+      <article class="specialty-card gold">
+        <div class="specialty-name">Edge <span class="pill" style="background:var(--opal-gold-bg)">For him</span></div>
+        <div class="specialty-tag">Men · Vitality · Recovery</div>
+        <p class="specialty-text">For men 35+. Supports natural testosterone, energy, and muscle preservation during active weight loss.</p>
+        <div class="specialty-ingredients">Tongkat Ali · Fenugreek · Zinc · Magnesium · Boron · Ashwagandha</div>
+        <div class="specialty-price">$32/mo</div>
+      </article>
+      <article class="specialty-card peach">
+        <div class="specialty-name">Cycle <span class="pill">For her</span></div>
+        <div class="specialty-tag">Cycle support · PMS</div>
+        <p class="specialty-text">For women still cycling. Targets the hormonal swings that can compound on GLP-1 therapy.</p>
+        <div class="specialty-ingredients">Chasteberry · Evening primrose · Vitamin B6 · Magnesium · Inositol</div>
+        <div class="specialty-price">$26/mo</div>
+      </article>
+    </div>
+  </div>
+
+  <div class="category-group">
+    <div class="category-h"><span class="category-num">iv.</span> Long-term &amp; Defense</div>
+    <div class="specialty-grid">
+      <article class="specialty-card mint">
+        <div class="specialty-name">Defend</div>
+        <div class="specialty-tag">Immune support</div>
+        <p class="specialty-text">Caloric restriction can dial down immune function. Defend keeps your body responsive year-round.</p>
+        <div class="specialty-ingredients">Vitamin C · Zinc · Elderberry · Echinacea · Selenium</div>
+        <div class="specialty-price">$22/mo</div>
+      </article>
+      <article class="specialty-card gold">
+        <div class="specialty-name">Years</div>
+        <div class="specialty-tag">Longevity · Cellular</div>
+        <p class="specialty-text">For members thinking about the long arc. Years targets cellular energy and metabolic resilience.</p>
+        <div class="specialty-ingredients">NMN · Resveratrol · CoQ10 (Ubiquinol) · Astaxanthin · Pine bark</div>
+        <div class="specialty-price">$48/mo</div>
+      </article>
+      <article class="specialty-card violet">
+        <div class="specialty-name">Joint</div>
+        <div class="specialty-tag">Joint · Mobility</div>
+        <p class="specialty-text">Active recomposition stresses joints. Joint provides the building blocks your knees, hips, and shoulders need.</p>
+        <div class="specialty-ingredients">Glucosamine · Chondroitin · MSM · Boswellia · Turmeric</div>
+        <div class="specialty-price">$26/mo</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bundle-info">
+  <div class="bundle-info-inner">
+    <h2>Add to your <span class="accent">Opyll membership.</span></h2>
+    <p>The Opyll Stack is bundled with the Complete tier. Each specialty add-on is available a la carte to any member.</p>
+    <div class="bundle-info-row">
+      <div class="bundle-card">
+        <strong>$79/mo</strong>
+        <span>Core 4 bundled (Rise · Daily · Hold · Flow)</span>
+      </div>
+      <div class="bundle-card">
+        <strong>$22-48/mo</strong>
+        <span>Per specialty SKU a la carte</span>
+      </div>
+      <div class="bundle-card">
+        <strong>15% off</strong>
+        <span>Any 3+ SKUs in one delivery</span>
+      </div>
+    </div>
+    <a href="/#pricing" class="bundle-cta">Start your free visit <span>→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><span>Opyll</span><span class="mark" aria-hidden="true"></span></div>
+  <div class="footer-tagline">A physician-led GLP-1 program built for the full arc.</div>
+  <div class="footer-disclaimer">
+    These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease. <strong>Consult your physician before starting any supplement, especially while on prescription medication.</strong> Some specialty formulations may interact with hormonal or psychiatric medications — your Opyll physician will review your full regimen during your assessment.
+  </div>
+  <div class="footer-bottom">© 2026 Opyll, Inc. · All rights reserved</div>
+</footer>
+
+</body>
+</html>

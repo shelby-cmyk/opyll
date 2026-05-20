@@ -178,13 +178,13 @@
   .page-hero h1 .accent {
     font-family: var(--serif);
     font-style: italic;
-    font-weight: 400;
-    color: var(--ink-soft);
+    font-weight: 500;
+    background: linear-gradient(90deg, var(--opal-peach) 0%, var(--opal-violet) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     display: inline-block;
-    font-size: 0.75em;
-    padding: 0.04em 0.08em 0.12em 0;
-    margin-top: 0.1em;
-    letter-spacing: -0.025em;
+    padding: 0.02em 0.08em 0.1em 0;
   }
   .page-hero p {
     font-size: 17px;
@@ -603,7 +603,7 @@
 <header class="page-hero">
   <a href="index.html" class="back-link">← Back to Opyll</a>
   <div class="page-eyebrow">The Opyll Stack · Catalog</div>
-  <h1>A complete wellness toolkit,<br><span class="accent">from first dose forward.</span></h1>
+  <h1>A complete wellness toolkit,<br>from first <span class="accent">dose forward.</span></h1>
   <p>Four foundational formulations plus a growing library of specialty add-ons — designed to make your GLP-1 journey more sustainable from your first dose, and to protect what you've built for the years after. Mix, match, or take just what your body asks for.</p>
 </header>
 

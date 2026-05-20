@@ -2196,6 +2196,136 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .consent-btn.decline:hover { color: #FFFFFF; border-color: rgba(255,255,255,0.4); }
 
+
+  /* ── MEDICATION ZIGZAG ── */
+  .med-rows { max-width: 1100px; margin: 0 auto; }
+  .med-row {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 56px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .med-row:last-child { border-bottom: none; }
+  .med-row.reverse .med-text { order: 2; }
+  .med-row.reverse .med-photo { order: 1; }
+  .med-text { padding: 0 8px; }
+  .med-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .med-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+    padding-bottom: 0.06em;
+    color: var(--ink);
+  }
+  .med-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 480px;
+  }
+  .med-photo {
+    aspect-ratio: 1 / 2;
+    max-width: 280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .med-photo .vial-stage {
+    width: 100%; height: 100%;
+    margin: 0;
+  }
+
+  /* ── PROTOCOL ZIGZAG ── */
+  .phase-list { max-width: 1100px; margin: 0 auto; }
+  .phase-row {
+    display: grid;
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 56px;
+    align-items: center;
+    padding: 56px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .phase-row:last-child { border-bottom: none; }
+  .phase-row.reverse { grid-template-columns: 1.3fr 0.9fr; }
+  .phase-row.reverse .phase-visual { order: 2; }
+  .phase-row.reverse .phase-text { order: 1; }
+  .phase-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+  }
+  .phase-num-display {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(120px, 16vw, 200px);
+    font-weight: 400;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, var(--opal-peach) 0%, var(--opal-violet) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    padding: 0.1em 0.12em 0.1em 0;
+    overflow: visible;
+  }
+  .phase-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .phase-text { padding: 0 8px; }
+  .phase-text h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(44px, 5.5vw, 64px);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 20px;
+    padding-bottom: 0.06em;
+    color: var(--ink);
+  }
+  .phase-text p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 520px;
+  }
+
+  @media (max-width: 960px) {
+    .med-row, .phase-row, .phase-row.reverse {
+      grid-template-columns: 1fr !important;
+      gap: 32px;
+      padding: 40px 0;
+    }
+    .med-row.reverse .med-text, .med-row.reverse .med-photo,
+    .phase-row.reverse .phase-visual, .phase-row.reverse .phase-text {
+      order: initial;
+    }
+    .med-photo { max-width: 220px; }
+    .phase-num-display { font-size: 96px; }
+    .phase-text h3 { font-size: 40px; }
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
     nav { padding: 0 24px; height: 64px; }
@@ -2376,9 +2506,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <h2 class="section-h">Two formulations. <span class="accent">Your physician decides.</span></h2>
   <p class="section-sub">Compounded by U.S.-licensed pharmacies, prescribed by your physician based on your medical history, goals, and clinical fit. Shipped temperature-controlled, monthly, to your door.</p>
 
-  <div class="vials-grid">
-    <article class="vial-card sema">
-      <div class="vial-stage">
+  <div class="med-rows">
+    <article class="med-row sema">
+      <div class="med-text">
+        <div class="med-num">Formulation N°01</div>
+        <h3 class="med-name">Semaglutide</h3>
+        <p class="med-desc">A GLP-1 receptor agonist. Helps regulate appetite and satiety by mimicking a hormone the body produces naturally. The most-prescribed compounded GLP-1.</p>
+      </div>
+      <div class="med-photo">
+        <div class="vial-stage">
         <svg viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <filter id="vshadSema" x="-50%" y="-50%" width="200%" height="200%">
@@ -2504,14 +2640,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           </g>
         </svg>
+        </div>
       </div>
-      <div class="vial-num">Formulation N°01</div>
-      <h3 class="vial-name">Semaglutide</h3>
-      <p class="vial-desc">A GLP-1 receptor agonist. Helps regulate appetite and satiety by mimicking a hormone the body produces naturally. The most-prescribed compounded GLP-1.</p>
     </article>
 
-    <article class="vial-card tirz">
-      <div class="vial-stage">
+    <article class="med-row tirz reverse">
+      <div class="med-text">
+        <div class="med-num">Formulation N°02</div>
+        <h3 class="med-name">Tirzepatide</h3>
+        <p class="med-desc">A dual GIP and GLP-1 receptor agonist. Targets two metabolic pathways for enhanced appetite regulation and metabolic response. Often selected for higher BMI starting points.</p>
+      </div>
+      <div class="med-photo">
+        <div class="vial-stage">
         <svg viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <filter id="vshadTirz" x="-50%" y="-50%" width="200%" height="200%">
@@ -2637,10 +2777,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
           </g>
         </svg>
+        </div>
       </div>
-      <div class="vial-num">Formulation N°02</div>
-      <h3 class="vial-name">Tirzepatide</h3>
-      <p class="vial-desc">A dual GIP and GLP-1 receptor agonist. Targets two metabolic pathways for enhanced appetite regulation and metabolic response. Often selected for higher BMI starting points.</p>
     </article>
   </div>
 </section>
@@ -2824,26 +2962,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <h2 class="section-h">Real loss. <span class="accent">Then the years after.</span></h2>
   <p class="section-sub">Every Opyll member moves through the same arc — guided weight loss with compounded GLP-1 therapy, supported by the Opyll Stack from your first dose, with ongoing care for the years after. The medication does the work; the Stack and member community keep you anchored throughout.</p>
 
-  <div class="protocol-grid">
-    <article class="protocol-card p1">
-      <div class="protocol-num">Phase 01</div>
-      <div class="protocol-icon">B</div>
-      <h3 class="protocol-h">Begin</h3>
-      <p class="protocol-text">A board-certified physician reviews your full medical history, labs, and goals. Your personalized protocol — including the right branded GLP-1 for you — is shipped to your door within days.</p>
+  <div class="phase-list">
+    <article class="phase-row">
+      <div class="phase-visual">
+        <div class="phase-num-display">01</div>
+        <div class="phase-tag">Phase · Begin</div>
+      </div>
+      <div class="phase-text">
+        <h3>Begin</h3>
+        <p>A board-certified physician reviews your full medical history, labs, and goals. Your personalized protocol — including the right compounded GLP-1 for you — is shipped to your door within days.</p>
+      </div>
     </article>
 
-    <article class="protocol-card p2">
-      <div class="protocol-num">Phase 02</div>
-      <div class="protocol-icon">R</div>
-      <h3 class="protocol-h">Reduce</h3>
-      <p class="protocol-text">Active weight loss with continuous clinical guidance. Body composition tracking, dose optimization, side-effect management, and integration with the lifestyle changes that make the loss last.</p>
+    <article class="phase-row reverse">
+      <div class="phase-visual">
+        <div class="phase-num-display">02</div>
+        <div class="phase-tag">Phase · Reduce</div>
+      </div>
+      <div class="phase-text">
+        <h3>Reduce</h3>
+        <p>Active weight loss with continuous clinical guidance. Body composition tracking, dose optimization, side-effect management, and integration with the lifestyle changes that make the loss last.</p>
+      </div>
     </article>
 
-    <article class="protocol-card p3">
-      <div class="protocol-num">Phase 03</div>
-      <div class="protocol-icon">H</div>
-      <h3 class="protocol-h">Hold</h3>
-      <p class="protocol-text">Support that runs from day one through the years after. The Opyll Stack, member community, and body composition tracking — designed to make the journey more sustainable and protect what you've built.</p>
+    <article class="phase-row">
+      <div class="phase-visual">
+        <div class="phase-num-display">03</div>
+        <div class="phase-tag">Phase · Hold</div>
+      </div>
+      <div class="phase-text">
+        <h3>Hold</h3>
+        <p>Support that runs from day one through the years after. The Opyll Stack, member community, and body composition tracking — designed to make the journey more sustainable and protect what you've built.</p>
+      </div>
     </article>
   </div>
 </section>
@@ -3059,7 +3209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   ['sema', 'tirz'].forEach(function(type){
     var img = new Image();
     img.onload = function(){
-      document.querySelectorAll('.vial-card.' + type + ' .vial-stage').forEach(function(stage){
+      document.querySelectorAll('.med-row.' + type + ' .vial-stage, .vial-card.' + type + ' .vial-stage').forEach(function(stage){
         stage.innerHTML = '<img src="vial-' + type + '.png" alt="Compounded ' + (type === 'sema' ? 'semaglutide' : 'tirzepatide') + ' vial" style="width:100%;height:100%;object-fit:contain;display:block;">';
       });
     };

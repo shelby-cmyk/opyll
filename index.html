@@ -3,35 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Opyll — a physician-led GLP-1 program built for the full arc. Physician-led care, compounded medication, and the Hold Protocol designed for the long arc beyond active treatment.">
-<meta property="og:title" content="Opyll — Lose the weight. Keep what counts.">
-<meta property="og:description" content="The first GLP-1 program built for maintenance. Physician-led. Built to last.">
+<title>Opyll — Compounded GLP-1 from $149/mo · Lose the weight. Keep what counts.</title>
+<meta name="description" content="Compounded semaglutide from $149/mo (3-month plan) or $199/mo monthly. Same active molecule as Ozempic® and Wegovy®. Paired with the Opyll Stack to make your GLP-1 journey more sustainable from your first dose.">
+<meta name="keywords" content="compounded GLP-1, semaglutide, tirzepatide, weight loss, telehealth, online GLP-1, Opyll, supplements, GLP-1 supplements">
+<meta name="author" content="Opyll, Inc.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#15171C">
+<meta name="format-detection" content="telephone=no">
+<meta name="application-name" content="Opyll">
+<meta name="apple-mobile-web-app-title" content="Opyll">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="canonical" href="https://opyll.com/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Opyll">
+<meta property="og:title" content="Opyll — Compounded GLP-1 from $149/mo">
+<meta property="og:description" content="Compounded semaglutide from $149/mo. Same active molecule as Ozempic® — for up to 95% less. Paired with the Opyll Stack for a more sustainable GLP-1 journey.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://opyll.com/">
 <meta property="og:image" content="https://opyll.com/og-image.svg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Opyll — Lose the weight. Keep what counts.">
+
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Opyll — Lose the weight. Keep what counts.">
-<meta name="twitter:description" content="The first GLP-1 program built for maintenance. Physician-led. Built to last.">
+<meta name="twitter:site" content="@opyll">
+<meta name="twitter:title" content="Opyll — Compounded GLP-1 from $149/mo">
+<meta name="twitter:description" content="Compounded semaglutide from $149/mo. Same active molecule as Ozempic® — for up to 95% less. Paired with the Opyll Stack.">
 <meta name="twitter:image" content="https://opyll.com/og-image.svg">
-<title>Opyll — Lose the weight. Keep what counts.</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- Structured data (schema.org) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://opyll.com/#organization",
+      "name": "Opyll",
+      "url": "https://opyll.com",
+      "logo": "https://opyll.com/favicon.svg",
+      "description": "Physician-led compounded GLP-1 weight loss program with the Opyll Stack supplement system.",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "medicalSpecialty": ["Endocrinology", "Nutrition"],
+      "priceRange": "$149-$278/month"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://opyll.com/#website",
+      "url": "https://opyll.com",
+      "name": "Opyll",
+      "publisher": { "@id": "https://opyll.com/#organization" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Service",
+      "name": "Compounded GLP-1 Weight Loss Program",
+      "provider": { "@id": "https://opyll.com/#organization" },
+      "description": "Physician-prescribed compounded semaglutide or tirzepatide with the Opyll Stack supplement system. From $149/mo on a 3-month plan, or $199/mo monthly billing.",
+      "offers": [
+        { "@type": "Offer", "name": "Core (3-month plan)", "price": "149", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P3M" } },
+        { "@type": "Offer", "name": "Flex (monthly)", "price": "199", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Complete (Core + Opyll Stack)", "price": "228", "priceCurrency": "USD" }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <!--
-  ╭─ TRACKING + ATTRIBUTION ─────────────────────────────────────╮
-  │ Before launch, replace these placeholder values:             │
-  │   1. EVERFLOW_TRACKING_DOMAIN — your Everflow tracking domain │
-  │   2. EVERFLOW_OFFER_ID — your Opyll offer ID in Everflow     │
-  │   3. CLARITY_PROJECT_ID — Microsoft Clarity project ID       │
-  │   4. GTM_CONTAINER_ID — Google Tag Manager container ID      │
-  │ Conversion event fires from opyll.track('conversion') on     │
-  │ the post-purchase confirmation page (likely MaxLife's).      │
-  ╰──────────────────────────────────────────────────────────────╯
+  ╭─ TRACKING + ATTRIBUTION ──────────────────────────────────────╮
+  │ Before launch, replace these placeholder IDs:                 │
+  │   1. EVERFLOW_TRACKING_DOMAIN — Everflow tracking subdomain   │
+  │   2. EVERFLOW_OFFER_ID — Opyll offer ID in Everflow           │
+  │   3. CLARITY_PROJECT_ID — Microsoft Clarity project ID        │
+  │   4. GTM_CONTAINER_ID — Google Tag Manager container ID       │
+  │   5. GA4_MEASUREMENT_ID — Google Analytics 4 (G-XXXXXXXXXX)   │
+  │   6. META_PIXEL_ID — Facebook/Meta Pixel ID (numeric)         │
+  │   7. TIKTOK_PIXEL_ID — TikTok Pixel ID                        │
+  │                                                               │
+  │ All pixels load by default; consent-gating before launch is   │
+  │ STRONGLY recommended (MHMDA/GDPR/CCPA). Wrap each pixel in    │
+  │ a check for localStorage.getItem('opyll_consent') === 'all'.  │
+  │                                                               │
+  │ Conversion event fires from opyll.track('conversion') on the  │
+  │ post-purchase confirmation page (likely MaxLife's).           │
+  ╰───────────────────────────────────────────────────────────────╯
 -->
+
+<!-- Google Analytics 4 (gtag.js) -->
+<!-- Replace GA4_MEASUREMENT_ID with your real G-XXXXXXXXXX -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA4_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA4_MEASUREMENT_ID', { anonymize_ip: true });
+</script>
+
+<!-- Meta (Facebook) Pixel -->
+<!-- Replace META_PIXEL_ID with your real numeric pixel ID -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'META_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+<!-- TikTok Pixel -->
+<!-- Replace TIKTOK_PIXEL_ID with your real pixel ID -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('TIKTOK_PIXEL_ID');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
 
 <!-- Everflow SDK -->
 <script type="text/javascript" src="https://www.EVERFLOW_TRACKING_DOMAIN.com/scripts/sdk/everflow.js" async></script>

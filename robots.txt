@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Legal pages self-noindex via meta tag (still crawlable)
+
+Sitemap: https://opyll.com/sitemap.xml

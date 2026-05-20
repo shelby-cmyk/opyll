@@ -2276,14 +2276,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-weight: 500;
     line-height: 0.95;
     letter-spacing: -0.035em;
-    background: linear-gradient(135deg, var(--opal-peach) 0%, var(--opal-violet) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    padding: 0.08em 0.1em 0.1em 0;
+    color: var(--ink);
+    padding: 0 0.08em 0.1em 0;
     overflow: visible;
     text-align: center;
+    position: relative;
+  }
+  .phase-name-display::before {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 0 auto 28px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--opal-peach) 0%, var(--opal-violet) 100%);
+  }
+  .phase-row:nth-of-type(2) .phase-name-display::before {
+    background: linear-gradient(90deg, var(--opal-violet) 0%, var(--opal-mint) 100%);
+  }
+  .phase-row:nth-of-type(3) .phase-name-display::before {
+    background: linear-gradient(90deg, var(--opal-mint) 0%, var(--opal-gold) 100%);
   }
   .phase-tag {
     font-family: var(--mono);
@@ -2330,12 +2342,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .phase-name-display {
       font-size: clamp(52px, 13vw, 68px);
-      background: none !important;
-      -webkit-background-clip: initial !important;
-      background-clip: initial !important;
-      -webkit-text-fill-color: var(--ink) !important;
       color: var(--ink) !important;
       letter-spacing: -0.03em;
+    }
+    .phase-name-display::before {
+      width: 48px;
+      height: 2px;
+      margin-bottom: 18px;
     }
     .phase-tag { font-size: 9px; letter-spacing: 0.2em; }
   }

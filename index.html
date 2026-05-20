@@ -2452,12 +2452,111 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .phase-tag { font-size: 9px; letter-spacing: 0.2em; }
   }
 
+
+  /* ── MOBILE MENU (hamburger + overlay) ── */
+  .nav-burger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    z-index: 101;
+  }
+  .nav-burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s;
+  }
+  .nav-burger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-burger.active span:nth-child(2) { opacity: 0; }
+  .nav-burger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .nav-overlay {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: saturate(180%) blur(24px);
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+    padding: 48px 24px;
+    z-index: 98;
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    overflow-y: auto;
+  }
+  .nav-overlay.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-overlay ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 24px;
+  }
+  .nav-overlay a {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 14px 8px;
+    display: block;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .nav-overlay a:hover, .nav-overlay a:active {
+    color: var(--opal-peach);
+  }
+  .nav-overlay-cta {
+    font-family: var(--sans) !important;
+    font-style: normal !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    background: var(--ink) !important;
+    color: #FFFFFF !important;
+    padding: 18px 32px !important;
+    border-radius: 999px !important;
+    text-align: center;
+    letter-spacing: 0.01em;
+    margin-top: auto;
+    border-bottom: none !important;
+  }
+
+  /* ── HERO OPAL MOUSE PARALLAX (desktop only) ── */
+  .opal-stage {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
-    nav { padding: 0 24px; height: 64px; }
+    nav { padding: 0 20px; height: 64px; }
     .nav-links { display: none; }
     .wordmark { font-size: 24px; }
-    .nav-cta { padding: 10px 20px; font-size: 13px; }
+    .nav-cta { display: none; }
+    .nav-burger { display: flex; }
+    .nav-overlay a { font-size: 32px; }
 
     .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 64px; min-height: auto; }
     .hero::before { display: none; }
@@ -2572,7 +2671,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#faq">Questions</a></li>
   </ul>
   <a href="#pricing" class="nav-cta" data-track="nav_cta_click" data-track-loc="nav">Free visit</a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <ul>
+    <li><a href="#medication">Medication</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#process">How it works</a></li>
+    <li><a href="stack.html">The Stack</a></li>
+    <li><a href="#faq">Questions</a></li>
+  </ul>
+  <a href="#pricing" class="nav-overlay-cta" data-track="nav_overlay_cta_click" data-track-loc="mobile_menu">Start free visit →</a>
+</div>
 
 <header class="hero">
   <div>
@@ -3280,6 +3392,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   targets.forEach(function(el){ observer.observe(el); });
+})();
+
+// Mobile hamburger menu
+(function(){
+  var burger = document.getElementById('navBurger');
+  var overlay = document.getElementById('navOverlay');
+  if (!burger || !overlay) return;
+  function toggle(open){
+    var isOpen = arguments.length ? open : !overlay.classList.contains('show');
+    overlay.classList.toggle('show', isOpen);
+    burger.classList.toggle('active', isOpen);
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    overlay.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ toggle(); });
+  overlay.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ toggle(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && overlay.classList.contains('show')) toggle(false);
+  });
+})();
+
+// Hero opal mouse parallax (desktop only)
+(function(){
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  var opal = document.querySelector('.opal-stage');
+  var hero = document.querySelector('.hero');
+  if (!opal || !hero) return;
+  var raf = null;
+  function update(e){
+    var rect = hero.getBoundingClientRect();
+    var x = (e.clientX - rect.left - rect.width/2) / rect.width;
+    var y = (e.clientY - rect.top - rect.height/2) / rect.height;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function(){
+      opal.style.transform = 'translate(' + (x * 14) + 'px, ' + (y * 14) + 'px)';
+    });
+  }
+  hero.addEventListener('mousemove', update);
+  hero.addEventListener('mouseleave', function(){
+    if (raf) cancelAnimationFrame(raf);
+    opal.style.transform = '';
+  });
 })();
 
 // Scroll popup — appears at 35% scroll OR after 12s, dismissable for 7 days

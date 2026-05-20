@@ -543,11 +543,25 @@
     text-transform: uppercase; color: var(--ink-faint);
   }
 
+
+  .nav-burger { display: none; background: none; border: none; cursor: pointer; padding: 10px; width: 44px; height: 44px; flex-direction: column; justify-content: center; gap: 5px; z-index: 101; }
+  .nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--ink); border-radius: 2px; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s; }
+  .nav-burger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-burger.active span:nth-child(2) { opacity: 0; }
+  .nav-burger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav-overlay { position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.97); backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px); padding: 48px 24px; z-index: 98; transform: translateY(-12px); opacity: 0; pointer-events: none; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s; display: flex; flex-direction: column; gap: 32px; overflow-y: auto; }
+  .nav-overlay.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nav-overlay ul { list-style: none; display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid var(--hairline); padding-bottom: 24px; }
+  .nav-overlay a { font-family: var(--serif); font-style: italic; font-size: 32px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; padding: 14px 8px; display: block; transition: color 0.2s; }
+  .nav-overlay a:hover { color: var(--opal-peach); }
+  .nav-overlay-cta { font-family: var(--sans) !important; font-style: normal !important; font-size: 15px !important; font-weight: 600 !important; background: var(--ink) !important; color: #FFFFFF !important; padding: 18px 32px !important; border-radius: 999px !important; text-align: center; letter-spacing: 0.01em; margin-top: auto; }
+
   @media (max-width: 960px) {
-    nav { padding: 0 24px; height: 64px; }
+    nav { padding: 0 20px; height: 64px; }
     .nav-links { display: none; }
     .wordmark { font-size: 24px; }
-    .nav-cta { padding: 10px 20px; font-size: 13px; }
+    .nav-cta { display: none; }
+    .nav-burger { display: flex; }
     .page-hero { padding: 56px 24px 32px; }
     section { padding: 56px 24px; }
     .core-grid { grid-template-columns: repeat(2, 1fr); }
@@ -572,7 +586,20 @@
     <li><a href="index.html#faq">Questions</a></li>
   </ul>
   <a href="index.html#pricing" class="nav-cta">Free visit</a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <ul>
+    <li><a href="index.html#medication">Medication</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#process">How it works</a></li>
+    <li><a href="stack.html">The Stack</a></li>
+    <li><a href="index.html#faq">Questions</a></li>
+  </ul>
+  <a href="index.html#pricing" class="nav-overlay-cta">Start free visit →</a>
+</div>
 
 <header class="page-hero">
   <a href="index.html" class="back-link">← Back to Opyll</a>
@@ -769,5 +796,23 @@
   <div class="footer-bottom">© 2026 Opyll, Inc. · All rights reserved</div>
 </footer>
 
+<script>
+(function(){
+  var burger = document.getElementById('navBurger');
+  var overlay = document.getElementById('navOverlay');
+  if (!burger || !overlay) return;
+  function toggle(open){
+    var isOpen = arguments.length ? open : !overlay.classList.contains('show');
+    overlay.classList.toggle('show', isOpen);
+    burger.classList.toggle('active', isOpen);
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    overlay.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ toggle(); });
+  overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ toggle(false); }); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.classList.contains('show')) toggle(false); });
+})();
+</script>
 </body>
 </html>

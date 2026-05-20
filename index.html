@@ -2269,20 +2269,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gap: 16px;
     padding: 0 16px;
   }
-  .phase-num-display {
+  .phase-name-display {
     font-family: var(--serif);
     font-style: italic;
-    font-size: clamp(120px, 16vw, 200px);
-    font-weight: 400;
-    line-height: 0.85;
-    letter-spacing: -0.05em;
+    font-size: clamp(72px, 9vw, 124px);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
     background: linear-gradient(135deg, var(--opal-peach) 0%, var(--opal-violet) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    padding: 0.1em 0.12em 0.1em 0;
+    padding: 0.08em 0.1em 0.1em 0;
     overflow: visible;
+    text-align: center;
   }
   .phase-tag {
     font-family: var(--mono);
@@ -2293,16 +2294,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-weight: 600;
   }
   .phase-text { padding: 0 8px; }
-  .phase-text h3 {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(44px, 5.5vw, 64px);
-    font-weight: 500;
-    letter-spacing: -0.025em;
-    line-height: 1;
-    margin-bottom: 20px;
-    padding-bottom: 0.06em;
-    color: var(--ink);
+  .phase-text p:first-child {
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.55;
   }
   .phase-text p {
     font-size: 17px;
@@ -2322,8 +2316,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       order: initial;
     }
     .med-photo { max-width: 220px; }
-    .phase-num-display { font-size: 96px; }
-    .phase-text h3 { font-size: 40px; }
+    .phase-name-display { font-size: 64px; }
   }
 
   /* ── RESPONSIVE ── */
@@ -2965,33 +2958,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="phase-list">
     <article class="phase-row">
       <div class="phase-visual">
-        <div class="phase-num-display">01</div>
-        <div class="phase-tag">Phase · Begin</div>
+        <div class="phase-name-display">Begin</div>
+        <div class="phase-tag">Step i · Assessment</div>
       </div>
       <div class="phase-text">
-        <h3>Begin</h3>
         <p>A board-certified physician reviews your full medical history, labs, and goals. Your personalized protocol — including the right compounded GLP-1 for you — is shipped to your door within days.</p>
       </div>
     </article>
 
     <article class="phase-row reverse">
       <div class="phase-visual">
-        <div class="phase-num-display">02</div>
-        <div class="phase-tag">Phase · Reduce</div>
+        <div class="phase-name-display">Reduce</div>
+        <div class="phase-tag">Step ii · Active loss</div>
       </div>
       <div class="phase-text">
-        <h3>Reduce</h3>
         <p>Active weight loss with continuous clinical guidance. Body composition tracking, dose optimization, side-effect management, and integration with the lifestyle changes that make the loss last.</p>
       </div>
     </article>
 
     <article class="phase-row">
       <div class="phase-visual">
-        <div class="phase-num-display">03</div>
-        <div class="phase-tag">Phase · Hold</div>
+        <div class="phase-name-display">Hold</div>
+        <div class="phase-tag">Step iii · Maintenance</div>
       </div>
       <div class="phase-text">
-        <h3>Hold</h3>
         <p>Support that runs from day one through the years after. The Opyll Stack, member community, and body composition tracking — designed to make the journey more sustainable and protect what you've built.</p>
       </div>
     </article>

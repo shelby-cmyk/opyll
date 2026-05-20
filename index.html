@@ -2308,15 +2308,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 960px) {
     .med-row, .phase-row, .phase-row.reverse {
       grid-template-columns: 1fr !important;
-      gap: 32px;
-      padding: 40px 0;
+      gap: 24px;
+      padding: 36px 0;
+      text-align: center;
     }
     .med-row.reverse .med-text, .med-row.reverse .med-photo,
     .phase-row.reverse .phase-visual, .phase-row.reverse .phase-text {
       order: initial;
     }
-    .med-photo { max-width: 220px; }
-    .phase-name-display { font-size: 64px; }
+    .med-text { padding: 0; }
+    .med-photo { max-width: 200px; margin: 0 auto; }
+    .med-name { font-size: 44px; margin-bottom: 14px; }
+    .med-desc { font-size: 16px; margin: 0 auto; max-width: 460px; }
+    .phase-visual { padding: 0; gap: 8px; }
+    .phase-text { padding: 0; }
+    .phase-text p, .phase-text p:first-child {
+      font-size: 17px !important;
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+    .phase-name-display {
+      font-size: clamp(52px, 13vw, 68px);
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      background-clip: initial !important;
+      -webkit-text-fill-color: var(--ink) !important;
+      color: var(--ink) !important;
+      letter-spacing: -0.03em;
+    }
+    .phase-tag { font-size: 9px; letter-spacing: 0.2em; }
   }
 
   /* ── RESPONSIVE ── */
